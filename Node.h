@@ -1,6 +1,6 @@
 /**
 *	@author
-*	@date 
+*	@date
 *	@brief A header file for templated Node class
 */
 
@@ -20,7 +20,7 @@ class Node
 	/**
 	*   @pre None
 	*   @post None
-	*   @return Returns the value stored in the node	
+	*   @return Returns the value stored in the node
 	*/
 	T getValue() const;
 
@@ -40,7 +40,8 @@ class Node
 
 	/**
 	*   @pre Next is a pointer to a valid node or nullptr.
-	*   @post Sets the member pointer to point at the object (or nullptr) passed in.
+	*   @post Sets the private member pointer to point at
+	*					the object (or nullptr) passed in.
 	*   @return None.
 	*/
 	void setNext(Node<T>* next);
