@@ -21,6 +21,7 @@ private:
 public:
 	/** @pre None.
 	*   @post An empty list is created.
+	*		[note] m_front = nullptr;
 	*/
 	LinkedListOfInts();
 
@@ -77,7 +78,5 @@ public:
 	*   @return true if the front element was removed, false if the list is empty.
 	*/
 	bool removeFront();
-
 };
-
 #endif
