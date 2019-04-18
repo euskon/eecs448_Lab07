@@ -48,5 +48,9 @@ bool Test::test1()
 bool Test::test2()
 {
   printTestHeader();
-  return(true);
+  if(m_listPtr.isEmpty())
+  {
+    return(true);
+  }
+  return(false);
 }

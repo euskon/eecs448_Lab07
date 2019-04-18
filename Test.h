@@ -40,8 +40,20 @@ public:
     [note] Attempt to validate that m_front is pointing to nullptr
     using the isEmpty() func. Expect isEmpty() return TRUE.
     [note] Attempt to validate that size of list is set to 0 by constructor.
-  */
-  bool test1();//validate constructor created a LL that is empty & length == 0.
-  bool test2();//validate
+
+    validate constructor created a LL that is empty & length == 0.
+    given: empty list
+    expect: True */
+  bool test1();
+
+  /*validate isEmpty()
+    given: empty list
+    expect: True */
+  bool test2();
+
+  /*validate isEmpty()
+    given: non-empty list
+    expect: False */
+  bool test3();
 };
 #endif
