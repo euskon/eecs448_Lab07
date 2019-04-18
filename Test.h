@@ -1,6 +1,7 @@
 #ifndef TEST_H
 #define TEST_H
 #include "LinkedListOfInts.h"
+#include <vector>
 #include <iostream>
 using namespace std;
 class Test
@@ -46,14 +47,24 @@ public:
     expect: True */
   bool test1();
 
-  /*validate isEmpty()
+  /*
+    validate isEmpty()
+    trusting: toVector(int v)
     given: empty list
     expect: True */
   bool test2();
 
-  /*validate isEmpty()
+  /*
+    validate isEmpty()
+    trusting: addFront(int value)
     given: non-empty list
     expect: False */
   bool test3();
+  /*
+    validate addFront(int value);
+    trusting: toVector();
+    given: empty list
+    expect: list.size() == 1 */
+  bool test4();
 };
 #endif
