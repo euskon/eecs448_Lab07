@@ -1,16 +1,18 @@
 #ifndef TEST_H
 #define TEST_H
 #include "LinkedListOfInts.h"
+#include <iostream>
 class Test
 {
 private:
   LinkedListOfInts* m_listPtr;
+  int testCount;
+  const int NUM_OF_TESTS;
 
 public:
   /** @pre None.
-  *   @post Test object created and readied for execution.
-  *   [note] constructor which should create a list to be used
-  *   during the testing process.
+  *   @post Test object created and m_listPtr = nullptr.
+  *   [note] constructor which should init list to nullptr
   */
   Test();
   /** @pre Test object in scope.
@@ -24,10 +26,15 @@ public:
   *   some degree of detail.
   */
   void execute();
-  /** TESTS
+  void printTestHeader();
+  void printTestResults(bool result);
+
+  /** TESTS --------------------------------------
   * Testing suite for a linked list of integers
   * Legit
+  * ----------------------------------------------
   */
+
   /**
     [note] Attempt to validate that m_front is pointing to nullptr
     using the isEmpty() func. Expect isEmpty() return TRUE.
