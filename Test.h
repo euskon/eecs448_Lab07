@@ -2,6 +2,7 @@
 #define TEST_H
 #include "LinkedListOfInts.h"
 #include <iostream>
+using namespace std;
 class Test
 {
 private:

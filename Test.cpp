@@ -11,17 +11,18 @@ Test::~Test()
 void Test::execute()
 {
   printTestResults(test1());
+  printTestResults(test2());
 }
 void Test::printTestHeader()
 {
   testCount++;
-  cout << "TEST#" << testCount << '\n';
+  cout << "\tTEST#" << testCount << '\n';
 }
 void Test::printTestResults(bool result)
 {
   if(result)
   {
-    cout << "PASSED\n";
+    cout << "\tPASSED\n";
   }
   else
   {
@@ -47,4 +48,5 @@ bool Test::test1()
 bool Test::test2()
 {
   printTestHeader();
+  return(true);
 }
