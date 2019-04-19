@@ -12,8 +12,8 @@ int main(int argc, char** argv)
 {
 	//Example of declaring a LinkedListOfInts
 	// LinkedListOfInts testableList;
-	Test iof_Test;
-	iof_Test.execute();
+	Test i_Test;
+	i_Test.execute();
 	//You won't do all the tests in main; that's what your Test class will be for
 	//Example:
 	//TestSuite myTester;
