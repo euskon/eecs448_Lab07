@@ -77,6 +77,9 @@ bool Test::test3()
   }
   cout <<"\t\t[ list.isEmpty() || vector.empty() ] == true\n";
   cout <<"\t\tExpected: false\n";
+  // if(m_listPtr->isEmpty() == false)
+  //working here see if isEmpty failed
+  //or addFront failed to add
   return(false);
 }
 bool Test::test4()
