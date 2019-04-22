@@ -85,10 +85,20 @@ public:
   /*
     validate addFront(int value);
     trusting: toVector();
-    given: empty list
+    given: non-empty list
     expect: [ list.size() == 2 && vect.at(0) == 23 ] == true */
   bool test7();
+  /*
+    validate addFront(int value);
+    trusting: toVector();
+    given: empty list
+    expect: [ list.size() == 1 && vect.at(vect.size() - 1) == 15 ] == true */
   bool test8();
+  /*
+    validate addFront(int value);
+    trusting: toVector();
+    given: non-empty list
+    expect: [ list.size() == 2 && vect.at(vect.size() - 1) == 33 ] == true */
   bool test9();
 };
 #endif

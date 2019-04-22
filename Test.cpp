@@ -243,7 +243,7 @@ bool Test::test9()
     }
     if(listInVector.at(listInVector.size() - 1) != 33)
     {
-      cout << "\t\tIncorrect value at list position zero\n";
+      cout << "\t\tIncorrect value at list position (size - 1)\n";
       cout << "\t\tGiven: " << listInVector.at(listInVector.size() - 1) << "\n";
       cout << "\t\tExpected: 33\n";
     }
