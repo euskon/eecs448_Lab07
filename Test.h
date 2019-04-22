@@ -81,5 +81,14 @@ public:
     given: empty list
     expect: [ list.size() == 1 && vect.at(0) == 5 ] == true */
   bool test6();
+
+  /*
+    validate addFront(int value);
+    trusting: toVector();
+    given: empty list
+    expect: [ list.size() == 2 && vect.at(0) == 23 ] == true */
+  bool test7();
+  bool test8();
+  bool test9();
 };
 #endif

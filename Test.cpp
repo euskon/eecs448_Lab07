@@ -17,6 +17,9 @@ void Test::execute()
   printTestResults(test4());
   printTestResults(test5());
   printTestResults(test6());
+  printTestResults(test7());
+  printTestResults(test8());
+  printTestResults(test9());
 }
 void Test::printTestHeader()
 {
@@ -157,4 +160,93 @@ bool Test::test6()
   cout << "\t\t[ list.size() == 1 && vect.at(0) == 5 ] == false\n";
   cout << "\t\tExpected: true\n";
   return(false);
+}
+bool Test::test7()
+{
+  bool testResult = true;
+  printTestHeader();
+  cout << "\t\ttesting: addFront(23) on non-empty list\n";
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+  m_listPtr->addFront(5);
+  m_listPtr->addFront(23);
+  vector<int> listInVector(m_listPtr->toVector());
+  if(listInVector.size() == 2 && listInVector.at(0) == 23)
+  {
+    cout << "\t\t[ list.size() == 2 && vect.at(0) == 23 ] == true\n";
+    cout << "\t\tExpected: true\n";
+    return(true);
+  }
+  else
+  {
+    if(listInVector.size() < 2)
+    {
+      cout << "\t\t value(s) not added to list\n";
+    }
+    if(listInVector.at(0) != 23)
+    {
+      cout << "\t\tIncorrect value at list position zero\n";
+      cout << "\t\tGiven: " << listInVector.at(0) << "\n";
+      cout << "\t\tExpected: 23\n";
+    }
+    return(false);
+  }
+}
+bool Test::test8()
+{
+  printTestHeader();
+  cout << "\t\ttesting: addBack(15) on empty list\n";
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+  m_listPtr->addBack(15);
+  vector<int> listInVector(m_listPtr->toVector());
+  if(listInVector.size() == 1 && listInVector.at(0) == 15)
+  {
+    cout << "\t\t[ list.size() == 1 && vect.at(0) == 15 ] == true\n";
+    cout << "\t\tExpected: true\n";
+    return(true);
+  }
+  cout << "\t\t[ list.size() == 1 && vect.at(0) == 15 ] == false\n";
+  cout << "\t\tExpected: true\n";
+  return(false);
+}
+bool Test::test9()
+{
+  bool testResult = true;
+  printTestHeader();
+  cout << "\t\ttesting: addBack(33) on non-empty list\n";
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+  m_listPtr->addBack(15);
+  m_listPtr->addBack(33);
+  vector<int> listInVector(m_listPtr->toVector());
+  if(listInVector.size() == 2 && listInVector.at(listInVector.size() - 1) == 33)
+  {
+    cout << "\t\t[ list.size() == 2 && vect.at(listInVector.size() - 1) == 33 ] == true\n";
+    cout << "\t\tExpected: true\n";
+    return(true);
+  }
+  else
+  {
+    if(listInVector.size() < 2)
+    {
+      cout << "\t\t value(s) not added to list\n";
+    }
+    if(listInVector.at(listInVector.size() - 1) != 33)
+    {
+      cout << "\t\tIncorrect value at list position zero\n";
+      cout << "\t\tGiven: " << listInVector.at(listInVector.size() - 1) << "\n";
+      cout << "\t\tExpected: 33\n";
+    }
+    return(false);
+  }
 }
