@@ -14,6 +14,8 @@ void Test::execute()
   printTestResults(test1());
   printTestResults(test2());
   printTestResults(test3());
+  printTestResults(test4());
+  printTestResults(test5());
 }
 void Test::printTestHeader()
 {
@@ -84,5 +86,53 @@ bool Test::test3()
 }
 bool Test::test4()
 {
-
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+  printTestHeader();
+  cout << "\t\ttesting: size() on empty list\n";
+  vector<int> listInVector(m_listPtr->toVector());
+  if(m_listPtr->size() == 0 && listInVector.size() == 0)
+  {
+    cout << "\t\tlist.size() == vector.size() == 0, True, size works on empty list\n";
+    cout << "\t\tExpected: size() == 0, True\n";
+    return(true);
+  }
+  cout << "\t\tlist.size() != 0, size fails on empty list\n";
+  cout << "\t\tExpected: size() == 0\n";
+  return(false);
+}
+bool Test::test5()
+{
+  bool testResult = true;
+  printTestHeader();
+  cout << "\t\ttesting: size() on non-empty list\n";
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+  for(int i=0;i<3;i++)
+  {
+    cout << "\t\tcase: list of length " << i+1 << "\n";
+    m_listPtr->addFront(i+10);
+    vector<int> listInVector(m_listPtr->toVector());
+    if((m_listPtr->size() == i+1) && (listInVector.size() == i+1))
+    {
+      cout << "\t\tlist.size() == vector.size() == " << i+1 << "\n";
+      cout << "\t\tExpected: size() == " << i+1 << "\n";
+      cout << "\t\tcase: Passed\n\n";
+      testResult = testResult && true;
+    }
+    else
+    {
+      cout << "\t\tlist.size() != " << i+1 << "\n";
+      cout << "\t\tExpected: size() == " << i+1 << "\n";
+      cout << "\t\tcase: FAILED\n\n";
+      testResult = false;
+    }
+  }
+  return(testResult);
 }

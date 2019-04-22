@@ -60,11 +60,26 @@ public:
     given: non-empty list
     expect: False */
   bool test3();
+
+  /*
+    validate: size()
+    trusting: toVector();
+    given: empty list
+    expect: list.size() == 0 */
+  bool test4();
+
+  /*
+    validate: size()
+    trusting: toVector(), addFront();
+    given: list of length 1, 2, and 3.
+    expect: list.size() == 1, 2, 3, respectively */
+  bool test5();
+
   /*
     validate addFront(int value);
     trusting: toVector();
     given: empty list
     expect: list.size() == 1 */
-  bool test4();
+  bool test6();
 };
 #endif
