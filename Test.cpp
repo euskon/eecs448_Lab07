@@ -16,6 +16,7 @@ void Test::execute()
   printTestResults(test3());
   printTestResults(test4());
   printTestResults(test5());
+  printTestResults(test6());
 }
 void Test::printTestHeader()
 {
@@ -135,4 +136,25 @@ bool Test::test5()
     }
   }
   return(testResult);
+}
+bool Test::test6()
+{
+  printTestHeader();
+  cout << "\t\ttesting: addFront(5) on empty list\n";
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+  m_listPtr->addFront(5);
+  vector<int> listInVector(m_listPtr->toVector());
+  if(listInVector.size() == 1 && listInVector.at(0) == 5)
+  {
+    cout << "\t\t[ list.size() == 1 && vect.at(0) == 5 ] == true\n";
+    cout << "\t\tExpected: true\n";
+    return(true);
+  }
+  cout << "\t\t[ list.size() == 1 && vect.at(0) == 5 ] == false\n";
+  cout << "\t\tExpected: true\n";
+  return(false);
 }

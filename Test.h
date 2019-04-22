@@ -79,7 +79,7 @@ public:
     validate addFront(int value);
     trusting: toVector();
     given: empty list
-    expect: list.size() == 1 */
+    expect: [ list.size() == 1 && vect.at(0) == 5 ] == true */
   bool test6();
 };
 #endif
