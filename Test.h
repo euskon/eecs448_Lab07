@@ -30,6 +30,7 @@ public:
   void execute();
   void printTestHeader();
   void printTestResults(bool result);
+  void resetTestList();
 
   /** TESTS --------------------------------------
   * Testing suite for a linked list of integers

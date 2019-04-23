@@ -37,11 +37,21 @@ void Test::printTestResults(bool result)
     cout << "\t     FAILED\n";
   }
 }
+void Test::resetTestList()
+{
+  if(m_listPtr != nullptr)
+  {
+    delete m_listPtr;
+    m_listPtr = new LinkedListOfInts();
+  }
+}
 bool Test::test1()
 {
   printTestHeader();
   cout << "\t\ttesting: LinkedListOfInts() constructor\n";
+  //execute function to be tested
   m_listPtr = new LinkedListOfInts();
+  //check result and output
   if((m_listPtr != nullptr) && m_listPtr->isEmpty() && (m_listPtr->size() == 0))
   {
     cout << "\t\tisEmpty() => true, List is correctly set to nullptr\n";
@@ -61,6 +71,8 @@ bool Test::test2()
   printTestHeader();
   cout << "\t\ttesting: isEmpty() on empty list\n";
   vector<int> listInVector(m_listPtr->toVector());
+  //execute function to be tested &&
+  //check result and output
   if(m_listPtr->isEmpty() && listInVector.empty())
   {
     cout <<"\t\t[ list.isEmpty() && vector.empty() ] == true\n";
@@ -75,6 +87,8 @@ bool Test::test3()
   cout << "\t\ttesting: isEmpty() on non-empty list\n";
   m_listPtr->addFront(17);
   vector<int> listInVector(m_listPtr->toVector());
+  //execute function to be tested &&
+  //check result and output
   if(!(listInVector.empty()) && !(m_listPtr->isEmpty()))
   {
     cout << "\t\tGiven: list.size() > 1 \n";
@@ -83,21 +97,16 @@ bool Test::test3()
   }
   cout <<"\t\t[ list.isEmpty() || vector.empty() ] == true\n";
   cout <<"\t\tExpected: false\n";
-  // if(m_listPtr->isEmpty() == false)
-  //working here see if isEmpty failed
-  //or addFront failed to add
   return(false);
 }
 bool Test::test4()
 {
-  if(m_listPtr != nullptr)
-  {
-    delete m_listPtr;
-    m_listPtr = new LinkedListOfInts();
-  }
   printTestHeader();
+  resetTestList();
   cout << "\t\ttesting: size() on empty list\n";
   vector<int> listInVector(m_listPtr->toVector());
+  //execute function to be tested &&
+  //check result and output
   if(m_listPtr->size() == 0 && listInVector.size() == 0)
   {
     cout << "\t\tlist.size() == vector.size() == 0, True, size works on empty list\n";
@@ -112,17 +121,15 @@ bool Test::test5()
 {
   bool testResult = true;
   printTestHeader();
-  cout << "\t\ttesting: size() on non-empty list\n";
-  if(m_listPtr != nullptr)
-  {
-    delete m_listPtr;
-    m_listPtr = new LinkedListOfInts();
-  }
+  resetTestList();
+  cout << "\t\ttesting: size() on non-empty list\n";  
   for(int i=0;i<3;i++)
   {
     cout << "\t\tcase: list of length " << i+1 << "\n";
     m_listPtr->addFront(i+10);
     vector<int> listInVector(m_listPtr->toVector());
+    //execute function to be tested &&
+    //check result and output
     if((m_listPtr->size() == i+1) && (listInVector.size() == i+1))
     {
       cout << "\t\tlist.size() == vector.size() == " << i+1 << "\n";
@@ -143,14 +150,12 @@ bool Test::test5()
 bool Test::test6()
 {
   printTestHeader();
+  resetTestList();
   cout << "\t\ttesting: addFront(5) on empty list\n";
-  if(m_listPtr != nullptr)
-  {
-    delete m_listPtr;
-    m_listPtr = new LinkedListOfInts();
-  }
+  //execute function to be tested
   m_listPtr->addFront(5);
   vector<int> listInVector(m_listPtr->toVector());
+  //check result and output
   if(listInVector.size() == 1 && listInVector.at(0) == 5)
   {
     cout << "\t\t[ list.size() == 1 && vect.at(0) == 5 ] == true\n";
@@ -165,15 +170,13 @@ bool Test::test7()
 {
   bool testResult = true;
   printTestHeader();
+  resetTestList();
   cout << "\t\ttesting: addFront(23) on non-empty list\n";
-  if(m_listPtr != nullptr)
-  {
-    delete m_listPtr;
-    m_listPtr = new LinkedListOfInts();
-  }
+  //execute function to be tested
   m_listPtr->addFront(5);
   m_listPtr->addFront(23);
   vector<int> listInVector(m_listPtr->toVector());
+  //check result and output
   if(listInVector.size() == 2 && listInVector.at(0) == 23)
   {
     cout << "\t\t[ list.size() == 2 && vect.at(0) == 23 ] == true\n";
@@ -182,6 +185,7 @@ bool Test::test7()
   }
   else
   {
+    //extra specific feedback
     if(listInVector.size() < 2)
     {
       cout << "\t\t value(s) not added to list\n";
@@ -198,14 +202,12 @@ bool Test::test7()
 bool Test::test8()
 {
   printTestHeader();
+  resetTestList();
   cout << "\t\ttesting: addBack(15) on empty list\n";
-  if(m_listPtr != nullptr)
-  {
-    delete m_listPtr;
-    m_listPtr = new LinkedListOfInts();
-  }
+  //execute function to be tested
   m_listPtr->addBack(15);
   vector<int> listInVector(m_listPtr->toVector());
+  //check result and output
   if(listInVector.size() == 1 && listInVector.at(0) == 15)
   {
     cout << "\t\t[ list.size() == 1 && vect.at(0) == 15 ] == true\n";
@@ -218,17 +220,14 @@ bool Test::test8()
 }
 bool Test::test9()
 {
-  bool testResult = true;
   printTestHeader();
+  resetTestList();
   cout << "\t\ttesting: addBack(33) on non-empty list\n";
-  if(m_listPtr != nullptr)
-  {
-    delete m_listPtr;
-    m_listPtr = new LinkedListOfInts();
-  }
+  //execute function to be tested
   m_listPtr->addBack(15);
   m_listPtr->addBack(33);
   vector<int> listInVector(m_listPtr->toVector());
+  //check result and output
   if(listInVector.size() == 2 && listInVector.at(listInVector.size() - 1) == 33)
   {
     cout << "\t\t[ list.size() == 2 && vect.at(listInVector.size() - 1) == 33 ] == true\n";
@@ -237,6 +236,7 @@ bool Test::test9()
   }
   else
   {
+    //extra specific feedback
     if(listInVector.size() < 2)
     {
       cout << "\t\t value(s) not added to list\n";
