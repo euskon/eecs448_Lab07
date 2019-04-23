@@ -20,6 +20,8 @@ void Test::execute()
   printTestResults(test7());
   printTestResults(test8());
   printTestResults(test9());
+  printTestResults(test10());
+  printTestResults(test11());
 }
 void Test::printTestHeader()
 {
@@ -43,6 +45,13 @@ void Test::resetTestList()
   {
     delete m_listPtr;
     m_listPtr = new LinkedListOfInts();
+  }
+}
+void Test::printVect(vector<int> const& vect)
+{
+  for(int i = 0; i < vect.size(); i++)
+  {
+    cout << "index " << i << ":" << vect.at(i) << "\n";
   }
 }
 bool Test::test1()
@@ -168,7 +177,6 @@ bool Test::test6()
 }
 bool Test::test7()
 {
-  bool testResult = true;
   printTestHeader();
   resetTestList();
   cout << "\t\ttesting: addFront(23) on non-empty list\n";
@@ -243,10 +251,92 @@ bool Test::test9()
     }
     if(listInVector.at(listInVector.size() - 1) != 33)
     {
-      cout << "\t\tIncorrect value at list position (size - 1)\n";
+      cout << "\t\tSpecial: bug detected Incorrect value at list position (size - 1)\n";
       cout << "\t\tGiven: " << listInVector.at(listInVector.size() - 1) << "\n";
       cout << "\t\tExpected: 33\n";
     }
     return(false);
   }
+}
+bool Test::test10()
+{
+  printTestHeader();
+  resetTestList();
+  cout << "\t\ttesting: addBack() on list of size 3\n";
+  m_listPtr->addBack(7);
+  m_listPtr->addBack(14);
+  m_listPtr->addBack(21);
+  m_listPtr->addBack(28);
+  vector<int> listInVector(m_listPtr->toVector());
+  if((listInVector.size() == 4) && (listInVector.at(listInVector.size() - 1) == 28))
+  {
+    cout << "\t\t[ list.size() == 4 && vect.at(vect.size() - 1) == 28 ] == true\n";
+    cout << "\t\tExpected: true\n";
+    return(true);
+  }
+  else
+  {
+    cout << "\t\t vect.at(vect.size() - 1) != 28\n";
+    cout << "\t\tExpected: last element to equal 28\n";
+    //extra specific feedback
+    if(listInVector.at(0) == 28)
+    {
+      cout << "\t\tSpecial: bug detected vect.at(0) == 28\n";
+      cout << "\t\taddBack() caught addFront()-ing\n";
+    }
+    return(false);
+  }
+}
+bool Test::test11()
+{
+  bool funcBoolResult = false;
+  printTestHeader();
+  resetTestList();
+  cout << "\t\ttesting: removeFront() on list of size 4\n";
+  m_listPtr->addFront(7);
+  m_listPtr->addFront(14);
+  m_listPtr->addFront(21);
+  m_listPtr->addFront(28);
+  vector<int> listInVector(m_listPtr->toVector());
+  cout << "\t\tbefore:\n";
+  printVect(listInVector);
+  //execute function to be tested
+  funcBoolResult = m_listPtr->removeFront();
+  listInVector = m_listPtr->toVector();
+  cout << "\t\tafter:\n";
+  printVect(listInVector);
+  //check result and output
+  //extra specific feedback
+  if(funcBoolResult && (listInVector.size() == 3) && (listInVector.at(0) == 21)) 
+  {
+    cout << "\t\tremoveFront() returned true\n";
+    cout << "\t\tvect.size() == 3 && vect.at(0) == 21\n";
+    cout << "\t\tExpected: size == 3 and front == 21\n";
+    return(true);
+  }
+  //extra specific feedback
+  else if(funcBoolResult && (listInVector.size() == 4) && (listInVector.at(0) == 21))
+  {
+    cout << "\t\tremoveFront() returned true\n";
+    cout << "\t\tvect.size() == 4\n";
+    cout << "\t\tExpected: size == 3 and front == 21\n";
+  }
+  //extra specific feedback
+  else if((funcBoolResult == false) && (listInVector.size() != 3 ) && (listInVector.at(0) != 21))
+  {
+    cout << "\t\tremoveFront() returned false\n";
+    cout << "\t\tvect.size() != 3 && vect.at(0) != 21\n";
+    cout << "\t\tExpected: size == 3 and front == 21\n";
+  }
+  else
+  {
+    cout << "\t\tfurther testing required\n";
+  }
+  return(false);
+  
+
+  
+  
+  
+
 }
