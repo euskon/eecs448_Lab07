@@ -30,6 +30,9 @@ public:
   void execute();
   void printTestHeader();
   void printTestResults(bool result);
+  /*
+    validate: ~LinkedListOfInts()
+    expect: m_listPtr == nullptr */
   void resetTestList();
   void printVect(vector<int> const& vect);
 
@@ -127,6 +130,7 @@ public:
     given: list of size 4
     expect: [ vect.size() == 3 && vect.at(2) == 14 ] == true */
   bool test12();
+  
 
 };
 #endif

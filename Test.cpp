@@ -52,7 +52,7 @@ void Test::printVect(vector<int> const& vect)
 {
   for(int i = 0; i < vect.size(); i++)
   {
-    cout << "index " << i << ":" << vect.at(i) << "\n";
+    cout << "\t\tindex " << i << ":" << vect.at(i) << "\n";
   }
 }
 bool Test::test1()
@@ -321,7 +321,6 @@ bool Test::test11()
     cout << "\t\tremoveFront() returned true\n";
     cout << "\t\tvect.size() == 4\n";
     cout << "\t\tExpected: size == 3 and front == 21\n";
-    cout << "\t\tsize failed to decrement but remove worked\n";
   }
   //extra specific feedback
   else if((funcBoolResult == false) && (listInVector.size() != 3 ) && (listInVector.at(0) != 21))
@@ -364,20 +363,19 @@ bool Test::test12()
     return(true);
   }
   //extra specific feedback
-  else if(funcBoolResult && (listInVector.size() == 4) && (listInVector.at(2) == 14))
+  else if(funcBoolResult && (m_listPtr->size() == 4) && (listInVector.at(2) == 14))
   {
     cout << "\t\tremoveBack() returned true\n";
-    cout << "\t\tvect.size() == 4\n";
-    cout << "\t\tExpected: size == 3 and front == 21\n";
-    cout << "\t\tsize failed to decrement but remove worked\n";
+    cout << "\t\tlist.size() == 4\n";
+    cout << "\t\tExpected: list.size == 3 and front == 21\n";
+    cout << "\t\tSpecial: bug detected size failed to decrement but remove worked\n";
   }
   //extra specific feedback
-  else if((funcBoolResult == false) && (listInVector.size() != 3 ) && (listInVector.at(2) != 14))
+  else if((listInVector.size() != 3 ) && (listInVector.at(2) != 14))
   {
     cout << "\t\tremoveBack() returned false\n";
     cout << "\t\tvect.size() != 3 && vect.at(0) != 21\n";
     cout << "\t\tExpected: size == 3 and front == 21\n";
-    cout << "\t\tsize failed to decrement and remove failed\n";
   }
   else
   {
