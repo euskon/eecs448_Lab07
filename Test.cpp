@@ -22,6 +22,7 @@ void Test::execute()
   printTestResults(test9());
   printTestResults(test10());
   printTestResults(test11());
+  printTestResults(test12());
 }
 void Test::printTestHeader()
 {
@@ -320,6 +321,7 @@ bool Test::test11()
     cout << "\t\tremoveFront() returned true\n";
     cout << "\t\tvect.size() == 4\n";
     cout << "\t\tExpected: size == 3 and front == 21\n";
+    cout << "\t\tsize failed to decrement but remove worked\n";
   }
   //extra specific feedback
   else if((funcBoolResult == false) && (listInVector.size() != 3 ) && (listInVector.at(0) != 21))
@@ -333,10 +335,53 @@ bool Test::test11()
     cout << "\t\tfurther testing required\n";
   }
   return(false);
-  
-
-  
-  
-  
-
+}
+bool Test::test12()
+{
+  bool funcBoolResult = false;
+  printTestHeader();
+  resetTestList();
+  cout << "\t\ttesting: removeBack() on list of size 4\n";
+  m_listPtr->addFront(7);
+  m_listPtr->addFront(14);
+  m_listPtr->addFront(21);
+  m_listPtr->addFront(28);
+  vector<int> listInVector(m_listPtr->toVector());
+  cout << "\t\tbefore:\n";
+  printVect(listInVector);
+  //execute function to be tested
+  funcBoolResult = m_listPtr->removeBack();
+  listInVector = m_listPtr->toVector();
+  cout << "\t\tafter:\n";
+  printVect(listInVector);
+  //check result and output
+  //extra specific feedback
+  if(funcBoolResult && (listInVector.size() == 3) && (listInVector.at(2) == 14)) 
+  {
+    cout << "\t\tremoveBack() returned true\n";
+    cout << "\t\tvect.size() == 3 && vect.at(2) == 14\n";
+    cout << "\t\tExpected: size == 3 and front == 14\n";
+    return(true);
+  }
+  //extra specific feedback
+  else if(funcBoolResult && (listInVector.size() == 4) && (listInVector.at(2) == 14))
+  {
+    cout << "\t\tremoveBack() returned true\n";
+    cout << "\t\tvect.size() == 4\n";
+    cout << "\t\tExpected: size == 3 and front == 21\n";
+    cout << "\t\tsize failed to decrement but remove worked\n";
+  }
+  //extra specific feedback
+  else if((funcBoolResult == false) && (listInVector.size() != 3 ) && (listInVector.at(2) != 14))
+  {
+    cout << "\t\tremoveBack() returned false\n";
+    cout << "\t\tvect.size() != 3 && vect.at(0) != 21\n";
+    cout << "\t\tExpected: size == 3 and front == 21\n";
+    cout << "\t\tsize failed to decrement and remove failed\n";
+  }
+  else
+  {
+    cout << "\t\tfurther testing required\n";
+  }
+  return(false);
 }

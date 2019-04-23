@@ -121,6 +121,12 @@ public:
     //front = front.next();
     //delete temp;
   bool test11();
+  /*
+    validate: removeBack();
+    trusting: toVector(), vect.size(), vect.at();
+    given: list of size 4
+    expect: [ vect.size() == 3 && vect.at(2) == 14 ] == true */
+  bool test12();
 
 };
 #endif
